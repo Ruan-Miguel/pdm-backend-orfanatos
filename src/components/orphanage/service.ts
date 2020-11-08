@@ -18,4 +18,8 @@ export default class OrphanageService {
   public static async index() {
     return getRepository(OrphanageModel).find();
   }
+
+  public static show(id: number) {
+    return getRepository(OrphanageModel).findOneOrFail(id);
+  }
 }

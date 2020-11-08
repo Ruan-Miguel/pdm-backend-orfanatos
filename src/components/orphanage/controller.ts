@@ -32,4 +32,18 @@ export default class OrphanageController {
       .then((orphanages) => res.status(200).json(orphanages))
       .catch((err) => res.status(500).json(err.message));
   }
+
+  public static async show(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const intId = parseInt(id, 10);
+
+    if (Number.isNaN(intId) || intId <= 0) {
+      return res.status(400).json("id must be a positive integer");
+    }
+
+    return OrphanageService.show(intId)
+      .then((orphanage) => res.status(200).json(orphanage))
+      .catch((err) => res.status(400).json(err.message));
+  }
 }
