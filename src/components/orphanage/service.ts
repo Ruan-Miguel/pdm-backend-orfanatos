@@ -11,8 +11,12 @@ export default class OrphanageService {
     instructions: string;
     openingHours: string;
     openOnWeekends?: boolean;
+    images: { path: string }[];
   }) {
-    await getRepository(OrphanageModel).insert(orphanage);
+    const orphanageRepository = getRepository(OrphanageModel);
+    const teste = orphanageRepository.create(orphanage);
+
+    await orphanageRepository.save(teste).catch((err) => console.log(err));
   }
 
   public static async index() {

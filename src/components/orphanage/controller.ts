@@ -14,6 +14,18 @@ export default class OrphanageController {
       openOnWeekends,
     } = req.body;
 
+    const reImages = req.files;
+
+    if (!Array.isArray(reImages)) {
+      return res.status(400).json("incorrect image upload");
+    }
+
+    const images = reImages.map((image) => {
+      return {
+        path: image.filename,
+      };
+    });
+
     return OrphanageService.create({
       name,
       latitude,
@@ -22,6 +34,7 @@ export default class OrphanageController {
       instructions,
       openingHours,
       openOnWeekends,
+      images,
     })
       .then(() => res.status(201).send())
       .catch((err) => res.status(400).json(err.message));
