@@ -2,6 +2,8 @@ import express, { Application } from "express";
 import { createConnection } from "typeorm";
 import cors from "cors";
 
+import { orphanageRoutes } from "./components/orphanage";
+
 class App {
   public readonly express: Application;
 
@@ -26,9 +28,7 @@ class App {
   }
 
   private routes() {
-    this.express.get("/", (req, res) => {
-      return res.json("Tudo ok");
-    });
+    this.express.use("/orphanage", orphanageRoutes);
   }
 }
 
