@@ -26,4 +26,10 @@ export default class OrphanageController {
       .then(() => res.status(201).send())
       .catch((err) => res.status(400).json(err.message));
   }
+
+  public static async index(req: Request, res: Response) {
+    return OrphanageService.index()
+      .then((orphanages) => res.status(200).json(orphanages))
+      .catch((err) => res.status(500).json(err.message));
+  }
 }

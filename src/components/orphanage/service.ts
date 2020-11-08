@@ -14,4 +14,8 @@ export default class OrphanageService {
   }) {
     await getRepository(OrphanageModel).insert(orphanage);
   }
+
+  public static async index() {
+    return getRepository(OrphanageModel).find();
+  }
 }
