@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from "typeorm";
 
-import ImageModel from "../image/model";
+import { ImageModel } from "../image/index";
 
 @Entity("orphanage")
 export default class OrphanageModel {
@@ -37,7 +37,7 @@ export default class OrphanageModel {
     name: "open_on_weekends",
     default: false,
   })
-  openOnWeekends?: boolean;
+  openOnWeekends!: boolean;
 
   @OneToMany(() => ImageModel, (image) => image.orphanageKeyForeign, {
     cascade: ["insert", "update"],

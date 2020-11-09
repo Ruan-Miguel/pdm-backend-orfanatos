@@ -1,6 +1,6 @@
 import { getRepository } from "typeorm";
 
-import { OrphanageModel } from "./index";
+import { OrphanageModel, OrphanageView } from "./index";
 
 export default class OrphanageService {
   public static async create(orphanage: {
@@ -20,10 +20,18 @@ export default class OrphanageService {
   }
 
   public static async index() {
-    return getRepository(OrphanageModel).find();
+    return OrphanageView.renderMany(
+      await getRepository(OrphanageModel).find({
+        relations: ["images"],
+      })
+    );
   }
 
-  public static show(id: number) {
-    return getRepository(OrphanageModel).findOneOrFail(id);
+  public static async show(id: number) {
+    return OrphanageView.render(
+      await getRepository(OrphanageModel).findOneOrFail(id, {
+        relations: ["images"],
+      })
+    );
   }
 }

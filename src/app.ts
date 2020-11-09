@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { createConnection } from "typeorm";
 import cors from "cors";
+import path from "path";
 
 import { orphanageRoutes } from "./components/orphanage";
 
@@ -29,6 +30,10 @@ class App {
 
   private routes() {
     this.express.use("/orphanage", orphanageRoutes);
+    this.express.use(
+      "/upload",
+      express.static(path.join(__dirname, "..", "uploads"))
+    );
   }
 }
 
