@@ -1,5 +1,5 @@
 import { OrphanageModel } from "./index";
-import { ImageView } from "../image/index";
+import { ImageView } from "../image";
 
 export interface OrphanageViewInterface {
   id: number;

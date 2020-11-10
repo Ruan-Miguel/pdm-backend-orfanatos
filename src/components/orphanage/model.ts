@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from "typeorm";
 
-import { ImageModel } from "../image/index";
+import { ImageModel } from "../image";
 
 @Entity("orphanage")
 export default class OrphanageModel {

@@ -41,9 +41,10 @@ export default class OrphanageController {
   }
 
   public static async index(req: Request, res: Response) {
-    return OrphanageService.index()
-      .then((orphanages) => res.status(200).json(orphanages))
-      .catch((err) => res.status(500).json(err.message));
+    throw new Error("erro de teste");
+    // return OrphanageService.index()
+    //   .then((orphanages) => res.status(200).json(orphanages))
+    //   .catch((err) => res.status(500).json(err.message));
   }
 
   public static async show(req: Request, res: Response) {

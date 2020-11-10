@@ -6,7 +6,8 @@
   "scripts": {
     "ts:typeorm": "ts-node-dev node_modules/typeorm/cli.js",
     "predev": "yarn ts:typeorm migration:run",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server",
+    "start": "ts-node src/server"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
@@ -28,6 +29,7 @@
     "express": "^4.17.1",
     "multer": "^1.4.2",
     "sqlite3": "^5.0.0",
+    "ts-node": "^9.0.0",
     "typeorm": "^0.2.29"
   }
 }
